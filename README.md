@@ -1,14 +1,19 @@
-# Welcome to your CDK TypeScript project
+# Powertools Benchmarks
 
-This is a blank project for CDK development with TypeScript.
+Some Lambda functions to demonstrate and benchmark [Lambda Powertools TypeScript](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/).
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+* LoggerConsole - A function that logs using native `console.log`.
+* LoggerPowertools - A function that logs using [Lambda Powertools TypeScript Logger](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/logger/).
+* LoggerWinston - A function that logs using [winston](https://github.com/winstonjs/winston).
+* MetricsNone - 
 
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+| Function          | Description                                                                                                                                                          |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| LoggerConsole     | A function that logs using native `console.log`.                                                                                                                     |
+| LoggerPowertools  | A function that logs using [Powertools Logger](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/logger/).                                      |
+| LoggerWinston     | A function that logs using [winston](https://github.com/winstonjs/winston).                                                                                          |
+| MetricsNone       | A function that emits no metrics.                                                                                                                                    |
+| MetricsPowertools | A function that emits metrics using [Powertools Metrics](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/metrics/).                           |
+| MetricsSdkV3      | A function that emitcs metrics using [AWSSDKV3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-cloudwatch/classes/putmetricdatacommand.html). |
+| TracerPowertools  | A function that traces using [Powertools Tracer](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/tracer/).                                    |
+| TracerXRay        | A function that traces using [AWS XRay SDK](https://github.com/aws/aws-xray-sdk-node).                                                                               |
