@@ -2,11 +2,6 @@
 
 Some Lambda functions to demonstrate and benchmark [Lambda Powertools TypeScript](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/).
 
-* LoggerConsole - A function that logs using native `console.log`.
-* LoggerPowertools - A function that logs using [Lambda Powertools TypeScript Logger](https://awslabs.github.io/aws-lambda-powertools-typescript/latest/core/logger/).
-* LoggerWinston - A function that logs using [winston](https://github.com/winstonjs/winston).
-* MetricsNone - 
-
 | Function          | Description                                                                                                                                                          |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | LoggerConsole     | A function that logs using native `console.log`.                                                                                                                     |
