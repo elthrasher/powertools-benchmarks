@@ -32,6 +32,7 @@
     "@aws-sdk/client-cloudwatch": "^3.131.0",
     "@aws-sdk/client-lambda": "^3.131.0",
     "aws-cdk-lib": "2.32.1",
+    "aws-embedded-metrics": "^2.0.5",
     "aws-xray-sdk-core": "^3.3.6",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21",

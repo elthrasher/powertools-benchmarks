@@ -57,6 +57,12 @@ export class PowertoolsBenchmarksStack extends Stack {
       functionName: 'LoggerWinston',
     });
 
+    const metricsEMF = new NodejsFunction(this, 'MetricsEMF', {
+      ...lambdaProps,
+      entry: './src/metrics.emf.ts',
+      functionName: 'MetricsEMF',
+    });
+
     const metricsNone = new NodejsFunction(this, 'MetricsNone', {
       ...lambdaProps,
       entry: './src/metrics.none.ts',
@@ -73,6 +79,12 @@ export class PowertoolsBenchmarksStack extends Stack {
       ...lambdaProps,
       entry: './src/metrics.sdkv3.ts',
       functionName: 'MetricsSdkV3',
+      initialPolicy: [
+        new PolicyStatement({
+          actions: ['cloudwatch:PutMetricData'],
+          resources: ['*'],
+        }),
+      ],
     });
 
     const tracerPowertools = new NodejsFunction(this, 'TracerPowertools', {
@@ -87,10 +99,10 @@ export class PowertoolsBenchmarksStack extends Stack {
       ],
     });
 
-    const tracerXray = new NodejsFunction(this, 'TracerXray', {
+    const tracerXRay = new NodejsFunction(this, 'TracerXRay', {
       ...lambdaProps,
       entry: './src/tracer.xray.ts',
-      functionName: 'TracerXray',
+      functionName: 'TracerXRay',
       initialPolicy: [
         new PolicyStatement({
           actions: ['lambda:GetFunction'],
@@ -112,6 +124,11 @@ export class PowertoolsBenchmarksStack extends Stack {
     new CfnOutput(this, 'LoggerWinstonArn', {
       description: 'LoggerWinstonArn',
       value: loggerWinston.functionArn,
+    });
+
+    new CfnOutput(this, 'MetricsEMFArn', {
+      description: 'MetricsEMFArn',
+      value: metricsEMF.functionArn,
     });
 
     new CfnOutput(this, 'MetricsNoneArn', {
@@ -136,7 +153,7 @@ export class PowertoolsBenchmarksStack extends Stack {
 
     new CfnOutput(this, 'TracerXRayArn', {
       description: 'TracerXRayArn',
-      value: tracerXray.functionArn,
+      value: tracerXRay.functionArn,
     });
   }
 }

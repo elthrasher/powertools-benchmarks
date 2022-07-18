@@ -20,6 +20,9 @@ export const handler = async (
     console.log('The workflow failed.');
     metric = { MetricName: 'WorkflowFailure', Value: 1, Unit: 'Count' };
   }
-  const command = new PutMetricDataCommand({ MetricData: [], Namespace: '' });
+  const command = new PutMetricDataCommand({
+    MetricData: [metric],
+    Namespace: 'SdkV3Metrics',
+  });
   await client.send(command);
 };
