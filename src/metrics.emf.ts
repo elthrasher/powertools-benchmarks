@@ -1,10 +1,15 @@
 import { createMetricsLogger, Unit } from 'aws-embedded-metrics';
-import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
+
+import type {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  Context,
+} from 'aws-lambda';
 
 export const handler = async (
   _event: APIGatewayProxyEventV2,
   _context: Context
-): Promise<void> => {
+): Promise<APIGatewayProxyResultV2> => {
   const workflowSuccess = Math.random() > 0.5;
   const metrics = createMetricsLogger();
   metrics.putDimensions({ Service: 'EMF' });
@@ -14,4 +19,5 @@ export const handler = async (
     metrics.putMetric('WorkflowFailure', 1, Unit.Count);
   }
   await metrics.flush();
+  return { statusCode: 200 };
 };

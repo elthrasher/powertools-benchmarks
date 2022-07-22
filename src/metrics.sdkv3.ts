@@ -3,14 +3,19 @@ import {
   MetricDatum,
   PutMetricDataCommand,
 } from '@aws-sdk/client-cloudwatch';
-import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
+
+import type {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  Context,
+} from 'aws-lambda';
 
 const client = new CloudWatchClient({});
 
 export const handler = async (
   _event: APIGatewayProxyEventV2,
   _context: Context
-): Promise<void> => {
+): Promise<APIGatewayProxyResultV2> => {
   const workflowSuccess = Math.random() > 0.5;
   let metric: MetricDatum;
   if (workflowSuccess) {
@@ -25,4 +30,5 @@ export const handler = async (
     Namespace: 'SdkV3Metrics',
   });
   await client.send(command);
+  return { statusCode: 200 };
 };

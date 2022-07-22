@@ -1,6 +1,11 @@
 import { Logger } from '@aws-lambda-powertools/logger';
-import { LambdaInterface } from '@aws-lambda-powertools/commons';
-import { APIGatewayProxyEventV2, Context } from 'aws-lambda';
+
+import type { LambdaInterface } from '@aws-lambda-powertools/commons';
+import type {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  Context,
+} from 'aws-lambda';
 
 const logger = new Logger();
 
@@ -9,8 +14,9 @@ class Lambda implements LambdaInterface {
   public async handler(
     _event: APIGatewayProxyEventV2,
     _context: Context
-  ): Promise<void> {
+  ): Promise<APIGatewayProxyResultV2> {
     logger.info('Here is some info!');
+    return { statusCode: 200 };
   }
 }
 

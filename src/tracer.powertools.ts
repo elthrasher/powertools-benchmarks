@@ -5,6 +5,7 @@ import {
   GetFunctionCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
+
 import type { Context } from 'aws-lambda';
 
 const client = new LambdaClient({});

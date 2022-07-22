@@ -3,9 +3,9 @@ import {
   GetFunctionCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import type { Context } from 'aws-lambda';
 import { captureAsyncFunc, captureAWSv3Client } from 'aws-xray-sdk-core';
 
+import type { Context } from 'aws-lambda';
 const client = new LambdaClient({});
 
 captureAWSv3Client(client);
